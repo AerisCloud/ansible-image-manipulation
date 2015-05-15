@@ -1,0 +1,14 @@
+- name: "Ensure image manipulation libraries are installed"
+  apt: >
+    name={{ item }}
+    state=present
+  with_items:
+    - graphicsmagick
+    - graphicsmagick-libmagick-dev-compat
+    - libgraphicsmagick++3
+    - libgraphicsmagick3
+    - libcairo2-dev
+    - libjpeg8-dev
+  tags:
+    - image-manipulation
+    - pkgs

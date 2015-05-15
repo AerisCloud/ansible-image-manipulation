@@ -1,0 +1,13 @@
+- name: "Ensure image manipulation libraries are installed"
+  yum: >
+    name={{ item }}
+    state=present
+    enablerepo=epel
+  with_items:
+    - GraphicsMagick
+    - GraphicsMagick-devel
+    - cairo-devel
+    - libjpeg-turbo-devel
+  tags:
+    - image-manipulation
+    - pkgs
