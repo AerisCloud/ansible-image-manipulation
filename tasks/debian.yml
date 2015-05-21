@@ -9,6 +9,23 @@
     - libgraphicsmagick3
     - libcairo2-dev
     - libjpeg8-dev
+  when: ansible_distribution_major_version|int < 8
+  tags:
+    - image-manipulation
+    - pkgs
+
+- name: "Ensure image manipulation libraries are installed"
+  apt: >
+    name={{ item }}
+    state=present
+  with_items:
+    - graphicsmagick
+    - graphicsmagick-libmagick-dev-compat
+    - libgraphicsmagick++3
+    - libgraphicsmagick3
+    - libcairo2-dev
+    - libjpeg62-turbo-dev
+  when: ansible_distribution_major_version|int == 8
   tags:
     - image-manipulation
     - pkgs
